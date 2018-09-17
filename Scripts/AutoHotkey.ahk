@@ -18,10 +18,10 @@ GroupAdd, Games, ahk_exe FortniteClient-Win64-Shipping.exe
 #IfWinNotActive, ahk_group Games
 {
 
-	Numpad1::SendInput {Lwin down}{Left}{Lwin up}
-	Numpad2::SendInput {Lwin down}{Right}{Lwin up}
-	;F13::SendInput {Lwin down}{Left}{Lwin up}
-	;F14::SendInput {Lwin down}{Right}{Lwin up}
+;	Numpad1::SendInput {Lwin down}{Left}{Lwin up}
+;	Numpad2::SendInput {Lwin down}{Right}{Lwin up}
+	F13::SendInput {Lwin down}{Left}{Lwin up}
+	F14::SendInput {Lwin down}{Right}{Lwin up}
 	F15::SendInput {Lwin down}{d}{Lwin up}
 	F16::SendInput {LControl down}{LShift down}{LAlt down}{x}{LControl up}{LShift up}{LAlt up}
 	F17::MButton
