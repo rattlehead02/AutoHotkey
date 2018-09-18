@@ -8,7 +8,7 @@ GroupAdd, Games, ahk_exe DRAGON QUEST XI.exe
 GroupAdd, Games, NMS
 GroupAdd, Games, No Man's Sky
 GroupAdd, Games, ahk_exe FortniteClient-Win64-Shipping.exe
-
+;Test Comment
 \::Control
 ]::Alt
 
