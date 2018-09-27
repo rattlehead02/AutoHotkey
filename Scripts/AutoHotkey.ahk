@@ -7,31 +7,47 @@ SetWorkingDir %A_ScriptDir%
 GroupAdd, Games, ahk_exe DRAGON QUEST XI.exe
 GroupAdd, Games, NMS
 GroupAdd, Games, No Man's Sky
+GroupAdd, Games, M:\Documents\Autohotkey\Scripts\AutoHotkey.ahk - AutoHotkey v1.1.30.00
 GroupAdd, Games, ahk_exe FortniteClient-Win64-Shipping.exe
-;Test Comment
+GroupAdd, Games, ahk_exe TESV.exe
+
 \::Control
 ]::Alt
 
-+f5::Suspend
 ^f5::Reload
++f5::Suspend
+
+;LEGEND TO BE PASTED TO OTHER AREAS FOR CLARITY
+;Btn  1
+;Btn  2
+;Btn  3
+;Btn  4
+;Btn  5
+;Btn  6
+;Btn  7
+;Btn  8
+;Btn  9
+;Btn 10
+;Btn 11
+;Btn 12
 
 #IfWinNotActive, ahk_group Games
 {
-
-;	Numpad1::SendInput {Lwin down}{Left}{Lwin up}
-;	Numpad2::SendInput {Lwin down}{Right}{Lwin up}
-	F13::SendInput {Lwin down}{Left}{Lwin up}
-	F14::SendInput {Lwin down}{Right}{Lwin up}
-	F15::SendInput {Lwin down}{d}{Lwin up}
-	F16::SendInput {LControl down}{LShift down}{LAlt down}{x}{LControl up}{LShift up}{LAlt up}
-	F17::MButton
-	F18::Control
-	F19::SendInput {LControl down}{LAlt down}{Pgdn}{LControl up}{LAlt up}
-	F20::SendInput {LControl down}{LAlt down}{Pgup}{LControl up}{LAlt up}
-	F21::Media_Next
-	F22::Volume_Down
-	F23::Volume_Mute
-	F24::Volume_Up
+	WinMaximize
+	F13::SendInput {Lwin down}{Left}{Lwin up}                                                  ;Btn  1
+	F14::SendInput {Lwin down}{Right}{Lwin up}                                                 ;Btn  2
+	F13 & F14::WinMaximize, A
+	F15::SendInput {Lwin down}{d}{Lwin up}                                                     ;Btn  3
+	;F14 & F15::WinMinimize, A
+	F16::SendInput {LControl down}{LShift down}{LAlt down}{x}{LControl up}{LShift up}{LAlt up} ;Btn  4
+	F17::MButton                                                                               ;Btn  5
+	F18::Control                                                                               ;Btn  6
+	F19::SendInput {LControl down}{LAlt down}{Pgdn}{LControl up}{LAlt up}                      ;Btn  7
+	F20::SendInput {LControl down}{LAlt down}{Pgup}{LControl up}{LAlt up}                      ;Btn  8
+	F21::Media_Next                                                                            ;Btn  9
+	F22::Volume_Down                                                                           ;Btn 10
+	F23::Volume_Mute                                                                           ;Btn 11
+	F24::Volume_Up                                                                             ;Btn 12
 	Return
 }
 
@@ -41,21 +57,129 @@ GroupAdd, Games, ahk_exe FortniteClient-Win64-Shipping.exe
 	F14::d
 	Up::w
 	Down::s
+	home::
+		sprintToggle:=true
+		If sprintToggle:=true
+		{
+			Send, {w Down}
+		}
+		else
+		{
+			Send, {w up}
+		}
+		return
 	Enter::Space
 }
 
-#IfWinActive, ahk_exe DRAGON QUEST XI.exe
+#IfWinActive, DRAGON QUEST XI
 {
-	nSleep = 50
 
-	F15::z
 
-	~w::up
-	~a::left
-	~s::down
-	~d::right
-	~Enter::v
-	Esc::z
+	End::x
+	,::g
+	.::j
+
+	; F15 IS Y BUTTON ON CONTROLLER
+
+	;F15::z
+
+	F15 & up::y
+	F15 & Down::h
+	F15 & Left::g
+	F15 & Right::j
+	F15 & Enter::v
+	F15 & BackSpace::BackSpace
+	F15::Send, {z down} {z up}
+
+
+
+
+	F16::               ;4
+	F18::`              ;6
+	F21::               ;0
+	F22::Volume_Down    ;0
+	F23::p              ;-
+	F24::Volume_Up      ;=
+
+	Return
+
+}
+
+#IfWinActive No Man's Sky
+{
+	/*
+	TO DO: Make F13-F24 INTO CONSTANT GLOBAL VARIABLES btn1=F13, btn2=F14, btn3=F15
+	*/
+
+	,::e   ;Lt Scroll
+	.::c   ;Rt Scroll
+
+	F15::r ;3
+	F16::z ;4
+	F17::x ;5
+	F18::f ;6
+	F19::b ;7
+	F20::v ;8
+	F21::q ;9
+	F22::t ;0
+	F23::g ;-
+	F24::h ;=
+
+	Pgdn::Tab
+	End::m
+
+
+}
+
+#IfWinActive, ahk_exe TESV.exe
+{
+	F15::Tab  ;Btn 3
+	F16::1  ;Btn 4
+	F17::2	;Btn 5
+	F18::z	;Btn 6
+	F19::r	;Btn 7
+	F20::p	;Btn 8
+	F21::6	;Btn 9
+;	F22::r	;Btn 0
+	F23::f	;Btn -
+;	F24::	;Btn =
+	,::e
+	.::f
+	Pgdn::i
+	End::m
+	delete::c
+
+
+}
+
+#IfWinActive, ahk_exe FortniteClient-Win64-Shipping.exe
+{
+	F15::Tab
+	F16::4
+	F17::5
+	F18::6
+	F19::7
+	F20::8
+	F21::9
+	F22::0
+	F23::-
+	F24::=
+}
+
+
+/*
+
+
+*****************************************************************
+*****************************************************************
+*****                                                       *****
+*****       THIS IS CODE I WAS MESSING WITH FOR DQXI        *****
+*****                                                       *****
+*****************************************************************
+*****************************************************************
+
+nSleep = 50
+
 	q::
 		SendInput {F15 down}
 		sleep nSleep
@@ -120,99 +244,12 @@ GroupAdd, Games, ahk_exe FortniteClient-Win64-Shipping.exe
 		SendInput {v up}
 		Return
 
-	/*SetKeyDelay, -1, 10
+	SetKeyDelay, -1, 10
 	WheelUp::
 	WheelDown::
 	If (A_ThisHotkey == A_PriorHotkey) && (PriorEvent > A_TickCount - 250)
 	return
 	PriorEvent := A_TickCount
 	Send % "{blind}" (A_ThisHotkey = "WheelUp" ? "y" : "h")
+
 	*/
-
-	/*;,::g
-	;.::j
-	; F15 IS Y BUTTON ON CONTROLLER
-	F15 & up::y
-	F15 & Down::h
-	F15 & Left::g
-	F15 & Right::j
-	F15 & Enter::v
-	F15 & BackSpace::BackSpace
-	F15 up::Send {Blind}{F15 down}{F15 up}
-	*/
-	End::x
-	;F16::k
-	;F18::`;
-	;F21::ToolTip, Test, 100, 150
-	F22::Volume_Down
-	F23::p
-	F24::Volume_Up
-	Return
-
-}
-
-#IfWinActive No Man's Sky
-{
-
-	F13::r
-	F16::z
-	F17::x
-	F18::f
-	F19::b
-	F20::v
-	F21::9
-	F22::t
-	F23::g
-	F24::h
-	,::e
-	.::c
-	Pgdn::Tab
-	End::m
-
-	delete::
-		SprintToggle := !SprintToggle
-		If (SprintToggle)
-		{
-			Send, {w Down}
-		}
-		else
-		{
-			Send, {w up}
-		}
-			return
-}
-
-#IfWinActive, ahk_exe TESV.exe
-{
-	F13::z
-	F16::1
-	F17::2
-	F18::3
-	F19::4
-	F20::5
-	F21::6
-	F22::7
-	F23::8
-	F24::
-	,::e
-	.::f
-	Pgdn::i
-	End::m
-	delete::c
-	Return
-
-}
-
-#IfWinActive, ahk_exe FortniteClient-Win64-Shipping.exe
-{
-	F15::3
-	F16::4
-	F17::5
-	F18::6
-	F19::7
-	F20::8
-	F21::9
-	F22::0
-	F23::-
-	F24::=
-}
