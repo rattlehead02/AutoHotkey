@@ -1,5 +1,3 @@
-DllCall("SystemParametersInfo", UInt, 0x14, UInt, 0, Str, "C:\Users\jeff\Desktop\Jubal Headset.jpg", UInt, 2)
-
 F15::r ;3
 F16::z ;4
 F17::x ;5

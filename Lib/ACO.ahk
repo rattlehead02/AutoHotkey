@@ -1,5 +1,3 @@
-DllCall("SystemParametersInfo", UINT, SPI_SETDESKWALLPAPER, UINT, uiParam, STR, "M:\Documents\Autohotkey\AHKOverlay\img\ACO Overlay.bmp", UINT, SPIF_SENDWININICHANGE)
-
 ,::e
 .::f
 \::c
